@@ -20,8 +20,12 @@ while(continuar === true) {
     } else if (opcao === 2) {
         let jogadorDeletado = prompt(`Qual jogador deseja deletar? ${time}`)
 
-        time.findIndex(nomes => {
-            
+        let indiceDeletado = time.findIndex(nomes => {
+            jogadorDeletado === nomes
+            console.log(nomes)
         })
+
+        time.splice(indiceDeletado, 1)
+        console.log(`Indice: ${indiceDeletado}  Jogador deletado: ${jogadorDeletado}`)
     }
 }
