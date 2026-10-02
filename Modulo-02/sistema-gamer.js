@@ -11,7 +11,8 @@ function mostrarMenu() {
     console.log("3 - Mostrar Equipe")
     console.log("4 - Calculo da Média da Equipe")
     console.log("5 - Buscar Jogador")
-    console.log("6 - Sair")
+    console.log("6 - Atualizar Pontos")
+    console.log("7 - Sair")
 }
 
 function cadastrarJogador() {
@@ -82,6 +83,23 @@ function buscarJogador() {
     }
 }
 
+function atualizarPontos() {
+    let nomeAtualizar = prompt("Qual o nome do jogador que você quer atualizar?")
+
+    let indiceAtualizar = time.findIndex(elementAtualizar => {
+        return nomeAtualizar.toLocaleLowerCase() === elementAtualizar.nome.toLocaleLowerCase()
+    })
+
+    if (indiceAtualizar === -1) {
+        console.log(`O jogador ${nomeAtualizar} não faz parte da nossa equipe!!`)
+    } else {
+        let pontosNovos = Number(prompt("Quantos pontos ele ganhou? "))
+        time[indiceAtualizar].pontuacao += pontosNovos
+
+        console.log(`SUCESSO! A pontuação de ${time[indiceAtualizar].nome} subiu para ${time[indiceAtualizar].pontuacao}`)
+    }
+}
+
 while(continuar === true) {
     mostrarMenu()
     let opcao = Number(prompt("Digite sua opção: "))
@@ -97,6 +115,8 @@ while(continuar === true) {
     } else if (opcao === 5){
         buscarJogador()
     } else if (opcao === 6) {
+        atualizarPontos()
+    } else if (opcao === 7) {
         continuar = false
     }
     else {
