@@ -10,7 +10,8 @@ function mostrarMenu() {
     console.log("2 - Deletar")
     console.log("3 - Mostrar Equipe")
     console.log("4 - Calculo da Média da Equipe")
-    console.log("5 - Sair")
+    console.log("5 - Buscar Jogador")
+    console.log("6 - Sair")
 }
 
 function cadastrarJogador() {
@@ -66,9 +67,24 @@ function calculoDaMedia() {
     console.log("A média do time é: ", media.toFixed(2))
 }
 
+function buscarJogador() {
+    let nomeDesejado = prompt("Digite o nome desejado: ")
+
+    let indiceNomeDesejado = time.findIndex(name => {
+        return nomeDesejado.toLocaleLowerCase() === name.nome.toLocaleLowerCase()
+    })
+
+    if (indiceNomeDesejado === -1) {
+        console.log(`O jogador ${nomeDesejado} não faz parte da nossa equipe!!`)
+    } else {
+        console.log("JOGADOR ENCONTRADO")
+        console.log(`Nome: ${time[indiceNomeDesejado].nome} | Pontos: ${time[indiceNomeDesejado].pontuacao}`)
+    }
+}
+
 while(continuar === true) {
     mostrarMenu()
-    let opcao = Number(prompt("Digite sua opção:"))
+    let opcao = Number(prompt("Digite sua opção: "))
 
     if (opcao === 1) {
         cadastrarJogador()
@@ -79,8 +95,10 @@ while(continuar === true) {
     } else if (opcao === 4){
         calculoDaMedia()
     } else if (opcao === 5){
+        buscarJogador()
+    } else if (opcao === 6) {
         continuar = false
-    } 
+    }
     else {
         console.log("Opção inválida, digite outra opção...")
     }
